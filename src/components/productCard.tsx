@@ -31,9 +31,7 @@ const ProductCard = ({ product }: Props) => {
 
       <div className="mt-8">
         <p className="text-xs text-[#959EAD]">Electironics</p>
-        <h4 className="text-base font-semibold text-dark_primary my-1">
-          Harman Kardon Speaker
-        </h4>
+        <h4 className="text-base font-medium text-dark_primary my-1">{name}</h4>
         <div className="flex items-center gap-1">
           {Array(rating)
             .fill("")

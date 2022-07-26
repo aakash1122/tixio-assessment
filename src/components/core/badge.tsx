@@ -15,7 +15,7 @@ const Badge = ({ css, count, children, ...rest }: Props) => {
       {children}
       {count && (
         <div className="w-max bg-primary flex items-center aspect-square rounded-3xl p-[5px] absolute -top-1/2 -right-1/2 transform -translate-x-1/2 translate-y-1/4">
-          <p className="font-semibold text-white text-[8px]">
+          <p className="font-medium text-white text-[8px]">
             {String(count).padStart(2, "0")}
           </p>
         </div>

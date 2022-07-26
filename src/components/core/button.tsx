@@ -2,7 +2,7 @@ import React, { PropsWithChildren } from "react";
 
 const variants = {
   filled: "bg-primary text-white",
-  outlined: "border-[1px] border-dark_primary text-dark_primary",
+  outlined: "border-dark_primary text-dark_primary",
 };
 type VariantType = keyof typeof variants;
 
@@ -20,7 +20,7 @@ const Button = ({
 }: Props) => {
   return (
     <button
-      className={`${css} flex items-center justify-center rounded gap-1 py-[10px] px-[20px] text-sm ${
+      className={`${css} flex items-center justify-center rounded gap-1 py-[10px] px-[20px] border-[1px] text-sm ${
         fullwidth ? "w-full" : "w-max"
       } ${variants[variant]} `}
     >
