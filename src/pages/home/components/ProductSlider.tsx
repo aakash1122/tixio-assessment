@@ -51,14 +51,7 @@ const Productslider = (props: Props) => {
         modules={[Navigation]}
         spaceBetween={50}
         slidesPerView={1}
-        onSwiper={(swiper) => console.log(swiper)}
-        // navigation={{
-        //   prevEl: ".prevBtn",
-        //   nextEl: ".nextBtn",
-        //   enabled: true,
-        // }}
         navigation={true}
-        onSlideChange={() => console.log("change")}
         className="product-slider"
       >
         <SwiperSlide>
@@ -68,16 +61,6 @@ const Productslider = (props: Props) => {
           <ProductSlide product={featuredProduct} />
         </SwiperSlide>
       </Swiper>
-      {/* <div className="prevBtn">
-        <Button>
-          <IoIosArrowBack />
-        </Button>
-      </div>
-      <div className="nextBtn">
-        <Button>
-          <IoIosArrowForward />
-        </Button>
-      </div> */}
     </div>
   );
 };

@@ -38,7 +38,7 @@ const ProductCard = ({ product }: Props) => {
           {Array(rating)
             .fill("")
             .map((_, i) => (
-              <AiFillStar size={16} className="fill-yellow-400" />
+              <AiFillStar size={16} className="fill-yellow-400" key={i} />
             ))}
         </div>
         <div className="mt-5">
