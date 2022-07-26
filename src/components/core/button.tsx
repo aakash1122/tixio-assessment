@@ -20,9 +20,9 @@ const Button = ({
 }: Props) => {
   return (
     <button
-      className={`flex items-center justify-center rounded gap-1 py-[10px] px-[20px] text-sm ${
+      className={`${css} flex items-center justify-center rounded gap-1 py-[10px] px-[20px] text-sm ${
         fullwidth ? "w-full" : "w-max"
-      } ${variants[variant]} ${css}`}
+      } ${variants[variant]} `}
     >
       {children}
     </button>

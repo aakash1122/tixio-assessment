@@ -1,12 +1,13 @@
-import React from "react";
-import ProductSlider from "../../components/product-slider";
+import ProductList from "./components/ProductList";
+import Productslider from "./components/ProductSlider";
 
 type Props = {};
 
 const Home = (props: Props) => {
   return (
     <div>
-      <ProductSlider />
+      <Productslider />
+      <ProductList />
     </div>
   );
 };

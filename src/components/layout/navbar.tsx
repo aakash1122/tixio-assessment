@@ -62,28 +62,30 @@ const Header = () => {
 
 const Navbar = () => {
   return (
-    <div className="container">
-      <div className="py-4 flex items-center justify-between border-b-[1px] border-[#E9E9E9]">
-        <div>
-          <div className="flex items-center gap-12">
-            <BrandLogo />
-            <div className="flex items-center gap-4">
-              {links.slice(0, 5).map((link) => (
-                <p className="nav-link">{link.label}</p>
-              ))}
+    <div className="sticky top-0 z-50 bg-white shadow">
+      <div className="container">
+        <div className="py-4 flex items-center justify-between border-b-[1px] border-[#E9E9E9]">
+          <div>
+            <div className="flex items-center gap-12">
+              <BrandLogo />
+              <div className="flex items-center gap-4">
+                {links.slice(0, 5).map((link) => (
+                  <p className="nav-link">{link.label}</p>
+                ))}
+              </div>
             </div>
+          </div>
+
+          <div className="flex items-center gap-4">
+            {links.slice(5).map((link) => (
+              <p className="nav-link">{link.label}</p>
+            ))}
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
-          {links.slice(5).map((link) => (
-            <p className="nav-link">{link.label}</p>
-          ))}
+        <div>
+          <Header />
         </div>
-      </div>
-
-      <div>
-        <Header />
       </div>
     </div>
   );
