@@ -1,7 +1,12 @@
 import Headphone from "@/assets/products/headphone.png";
-import { AiFillStar, AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart, AiFillStar, AiOutlineHeart } from "react-icons/ai";
+import { useSelector } from "react-redux";
 import { useAppDispatch } from "../store";
-import { addToCart } from "../store/slices/cartSlice";
+import {
+  addToCart,
+  selectWishlist,
+  toggleFromWishList,
+} from "../store/slices/cartSlice";
 import { Product } from "../types";
 import Button from "./core/button";
 
@@ -11,6 +16,8 @@ type Props = {
 
 const ProductCard = ({ product }: Props) => {
   const dispatch = useAppDispatch();
+  const wishList = useSelector(selectWishlist);
+  const isInWishList = wishList.indexOf(product.id) !== -1 ? true : false;
 
   const onAddToCart = () => {
     dispatch(addToCart(product));
@@ -26,10 +33,19 @@ const ProductCard = ({ product }: Props) => {
           </p>
         )}
         <div className="ml-auto">
-          <AiOutlineHeart
-            size={20}
-            className="cursor-pointer hover:fill-red-400"
-          />
+          {isInWishList ? (
+            <AiFillHeart
+              size={20}
+              className="cursor-pointer fill-red-600"
+              onClick={() => dispatch(toggleFromWishList(product.id))}
+            />
+          ) : (
+            <AiOutlineHeart
+              size={20}
+              className="cursor-pointer hover:fill-red-400"
+              onClick={() => dispatch(toggleFromWishList(product.id))}
+            />
+          )}
         </div>
       </div>
 

@@ -8,11 +8,13 @@ export type CartItemType = Product & {
 
 interface InitialCartState {
   cartItems: Record<string, CartItemType>;
+  wishList: string[];
   open: boolean;
 }
 const initialState: InitialCartState = {
   cartItems: {},
   open: false,
+  wishList: [],
 };
 
 export const cartSlice = createSlice({
@@ -55,20 +57,36 @@ export const cartSlice = createSlice({
         ...prevItems,
       };
     },
-
+    toggleFromWishList: (state, action: PayloadAction<string>) => {
+      const productIndex = state.wishList.indexOf(action.payload);
+      if (productIndex === -1) {
+        state.wishList.push(action.payload);
+      } else {
+        let wishlist = [...state.wishList];
+        wishlist.splice(productIndex, 1);
+        state.wishList = wishlist;
+      }
+    },
     toggleCart: (state) => {
       state.open = !state.open;
     },
   },
 });
 
-export const { addToCart, removeFromCart, toggleCart, reduceCartItemCount } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  toggleCart,
+  reduceCartItemCount,
+  toggleFromWishList,
+} = cartSlice.actions;
 
 export const selectCartItems = (state: RootState) =>
   Object.values(state.cart.cartItems);
 
 export const selectCartCount = (state: RootState) =>
   Object.values(state.cart.cartItems).length;
+
+export const selectWishlist = (state: RootState) => state.cart.wishList;
 
 export default cartSlice.reducer;

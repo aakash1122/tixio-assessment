@@ -5,7 +5,11 @@ import { CgMenuGridR } from "react-icons/cg";
 import { FiSearch } from "react-icons/fi";
 import Logo from "../../assets/logo.svg";
 import { useAppDispatch, useAppSelector } from "../../store";
-import { selectCartCount, toggleCart } from "../../store/slices/cartSlice";
+import {
+  selectCartCount,
+  selectWishlist,
+  toggleCart,
+} from "../../store/slices/cartSlice";
 import CartDrawer from "../cartDrawer";
 import Badge from "../core/badge";
 import Button from "../core/button";
@@ -35,6 +39,7 @@ const BrandLogo = () => {
 const Header = () => {
   const dispatch = useAppDispatch();
   const cartCount = useAppSelector(selectCartCount);
+  const wishList = useAppSelector(selectWishlist).length;
 
   return (
     <div className="flex items-center gap-6 py-4">
@@ -52,7 +57,7 @@ const Header = () => {
         <FiSearch size={20} />
       </TextField>
       <div className="flex items-center gap-4">
-        <Badge count={20} onClick={() => {}}>
+        <Badge count={wishList} onClick={() => {}}>
           <AiOutlineHeart size={20} />
         </Badge>
         <Badge count={cartCount} onClick={() => dispatch(toggleCart())}>
