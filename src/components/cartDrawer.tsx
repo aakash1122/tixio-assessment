@@ -59,7 +59,7 @@ const Cart = () => {
       {/* drawer */}
       <div className="w-[620px] right-0 top-0 h-screen z-[9999] fixed bg-white overflow-y-auto flex flex-col">
         {/* header */}
-        <div className="flex items-center p-6 border-b-[1px] border-[#E9E9E9]">
+        <div className="flex items-center p-6 border-b-[1px] border-[#E9E9E9] sticky top-0 bg-white">
           <MdClose size={32} className="cursor-pointer" />
           <div className="flex items-center mx-auto gap-2">
             <p className="font-medium text-2xl">My cart</p>
