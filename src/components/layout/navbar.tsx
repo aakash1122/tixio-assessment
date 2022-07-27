@@ -5,7 +5,7 @@ import { CgMenuGridR } from "react-icons/cg";
 import { FiSearch } from "react-icons/fi";
 import Logo from "../../assets/logo.svg";
 import { useAppDispatch, useAppSelector } from "../../store";
-import { toggleCart } from "../../store/slices/cartSlice";
+import { selectCartCount, toggleCart } from "../../store/slices/cartSlice";
 import CartDrawer from "../cartDrawer";
 import Badge from "../core/badge";
 import Button from "../core/button";
@@ -34,6 +34,7 @@ const BrandLogo = () => {
 
 const Header = () => {
   const dispatch = useAppDispatch();
+  const cartCount = useAppSelector(selectCartCount);
 
   return (
     <div className="flex items-center gap-6 py-4">
@@ -54,7 +55,7 @@ const Header = () => {
         <Badge count={20} onClick={() => {}}>
           <AiOutlineHeart size={20} />
         </Badge>
-        <Badge count={10} onClick={() => dispatch(toggleCart())}>
+        <Badge count={cartCount} onClick={() => dispatch(toggleCart())}>
           <BiShoppingBag size={20} />
         </Badge>
         <Badge onClick={() => {}}>

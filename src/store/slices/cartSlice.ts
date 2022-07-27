@@ -36,26 +36,39 @@ export const cartSlice = createSlice({
         };
         state.cartItems[action.payload.id] = newItem;
       }
-
-      // state.cartItems.push({ ...action.payload, itemCount: 1 });
+    },
+    reduceCartItemCount: (state, action: PayloadAction<Product>) => {
+      const item = state.cartItems[action.payload.id];
+      // decreament count
+      state.cartItems[item.id] = {
+        ...item,
+        itemCount: item.itemCount - 1,
+      };
     },
     removeFromCart: (state, action: PayloadAction<string>) => {
-      //   const allItems = [...state.cartItems];
-      //   const ramainingItems = allItems.filter(
-      //     (item) => item.id !== action.payload
-      //   );
-      //   state.cartItems = ramainingItems;
-      // },
+      const prevItems = { ...state.cartItems };
+
+      if (action.payload in prevItems) {
+        delete prevItems[action.payload];
+      }
+      state.cartItems = {
+        ...prevItems,
+      };
     },
+
     toggleCart: (state) => {
       state.open = !state.open;
     },
   },
 });
 
-export const { addToCart, removeFromCart, toggleCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, toggleCart, reduceCartItemCount } =
+  cartSlice.actions;
 
-// Other code such as selectors can use the imported `RootState` type
-export const selectCartItems = (state: RootState) => state.cart.cartItems;
+export const selectCartItems = (state: RootState) =>
+  Object.values(state.cart.cartItems);
+
+export const selectCartCount = (state: RootState) =>
+  Object.values(state.cart.cartItems).length;
 
 export default cartSlice.reducer;
