@@ -8,9 +8,11 @@ export type CartItemType = Product & {
 
 interface InitialCartState {
   cartItems: Record<string, CartItemType>;
+  open: boolean;
 }
 const initialState: InitialCartState = {
   cartItems: {},
+  open: false,
 };
 
 export const cartSlice = createSlice({
@@ -45,10 +47,13 @@ export const cartSlice = createSlice({
       //   state.cartItems = ramainingItems;
       // },
     },
+    toggleCart: (state) => {
+      state.open = !state.open;
+    },
   },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, toggleCart } = cartSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectCartItems = (state: RootState) => state.cart.cartItems;

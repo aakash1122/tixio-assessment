@@ -1,6 +1,8 @@
 import { AiOutlineDelete, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { BiShoppingBag } from "react-icons/bi";
 import { MdClose } from "react-icons/md";
+import { useAppDispatch } from "../store";
+import { toggleCart } from "../store/slices/cartSlice";
 import Button from "./core/button";
 
 const CartItemAction = () => {
@@ -52,6 +54,7 @@ const CartItem = () => {
 };
 
 const Cart = ({ open = false }: { open: boolean }) => {
+  const dispatch = useAppDispatch();
   if (!open) return null;
 
   return (
@@ -62,7 +65,11 @@ const Cart = ({ open = false }: { open: boolean }) => {
       <div className="w-[620px] right-0 top-0 h-screen z-[9999] fixed bg-white overflow-y-auto flex flex-col">
         {/* header */}
         <div className="flex items-center p-6 border-b-[1px] border-[#E9E9E9] sticky top-0 bg-white">
-          <MdClose size={32} className="cursor-pointer" />
+          <MdClose
+            size={32}
+            className="cursor-pointer"
+            onClick={() => dispatch(toggleCart())}
+          />
           <div className="flex items-center mx-auto gap-2">
             <p className="font-medium text-2xl">My cart</p>
             <BiShoppingBag size={36} />

@@ -1,13 +1,15 @@
-import React from "react";
-import Logo from "../../assets/logo.svg";
-import Button from "../core/button";
-import { FiSearch } from "react-icons/fi";
+import { useState } from "react";
 import { AiOutlineHeart, AiOutlineUser } from "react-icons/ai";
-import { CgMenuGridR } from "react-icons/cg";
 import { BiShoppingBag } from "react-icons/bi";
-import TextField from "../core/textfield";
-import Badge from "../core/badge";
+import { CgMenuGridR } from "react-icons/cg";
+import { FiSearch } from "react-icons/fi";
+import Logo from "../../assets/logo.svg";
+import { useAppDispatch, useAppSelector } from "../../store";
+import { toggleCart } from "../../store/slices/cartSlice";
 import CartDrawer from "../cartDrawer";
+import Badge from "../core/badge";
+import Button from "../core/button";
+import TextField from "../core/textfield";
 
 const links = [
   { label: "Products", link: "#" },
@@ -31,6 +33,8 @@ const BrandLogo = () => {
 };
 
 const Header = () => {
+  const dispatch = useAppDispatch();
+
   return (
     <div className="flex items-center gap-6 py-4">
       <Button variant="outlined" css="bg-[#F9FAFB] border-[#E9E9E9]">
@@ -50,7 +54,7 @@ const Header = () => {
         <Badge count={20} onClick={() => {}}>
           <AiOutlineHeart size={20} />
         </Badge>
-        <Badge count={10} onClick={() => {}}>
+        <Badge count={10} onClick={() => dispatch(toggleCart())}>
           <BiShoppingBag size={20} />
         </Badge>
         <Badge onClick={() => {}}>
@@ -62,9 +66,10 @@ const Header = () => {
 };
 
 const Navbar = () => {
+  const isCartOpen = useAppSelector((state) => state.cart.open);
   return (
     <>
-      <CartDrawer />
+      <CartDrawer open={isCartOpen} />
       <div className="sticky top-0 z-50 bg-white shadow">
         <div className="container">
           <div className="py-4 flex items-center justify-between border-b-[1px] border-[#E9E9E9]">
