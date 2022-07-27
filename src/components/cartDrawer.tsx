@@ -51,7 +51,9 @@ const CartItem = () => {
   );
 };
 
-const Cart = () => {
+const Cart = ({ open = false }: { open: boolean }) => {
+  if (!open) return null;
+
   return (
     <div className="">
       {/* overlay */}

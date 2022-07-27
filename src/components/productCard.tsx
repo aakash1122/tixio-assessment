@@ -1,5 +1,7 @@
 import Headphone from "@/assets/products/headphone.png";
 import { AiFillStar, AiOutlineHeart } from "react-icons/ai";
+import { useAppDispatch } from "../store";
+import { addToCart } from "../store/slices/cartSlice";
 import { Product } from "../types";
 import Button from "./core/button";
 
@@ -8,7 +10,13 @@ type Props = {
 };
 
 const ProductCard = ({ product }: Props) => {
-  const { name, imageUrl, onSale, rating, prevPrice, price } = product;
+  const dispatch = useAppDispatch();
+
+  const onAddToCart = () => {
+    dispatch(addToCart(product));
+  };
+
+  const { name, imageUrl, onSale, rating, price } = product;
   return (
     <div className="p-5 rounded border-[1px] border-[#F1F1F1]">
       <div className="flex items-center justify-between">
@@ -44,9 +52,10 @@ const ProductCard = ({ product }: Props) => {
             variant="outlined"
             css="justify-between group hover:bg-primary hover:border-primary"
             fullwidth
+            onClick={onAddToCart}
           >
             <p className="group-hover:text-white">Add To Cart</p>
-            <p className="group-hover:text-white">$1,725.00</p>
+            <p className="group-hover:text-white">$${price}</p>
           </Button>
         </div>
       </div>
