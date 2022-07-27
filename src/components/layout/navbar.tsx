@@ -78,7 +78,7 @@ const Navbar = () => {
       <CartDrawer open={isCartOpen} />
       <div className="sticky top-0 z-50 bg-white shadow">
         <div className="container">
-          <div className="py-4 flex items-center justify-between border-b-[1px] border-[#E9E9E9]">
+          <div className="py-4 flex flex-col md:flex-row items-center justify-between border-b-[1px] border-[#E9E9E9]">
             <div>
               <div className="flex items-center gap-12">
                 <BrandLogo />

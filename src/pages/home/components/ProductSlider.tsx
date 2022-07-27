@@ -12,15 +12,17 @@ const ProductSlide = ({
   product,
 }: PropsWithChildren & { product: Product }) => {
   return (
-    <div className="bg-[#E8F0D6] rounded py-36">
-      <div className="container grid grid-cols-2 items-center justify-center gap-6 ">
+    <div className="bg-[#E8F0D6] rounded py-16 lg:py-36">
+      <div className="container grid md:grid-cols-2 items-center justify-center gap-6 ">
         {/* content */}
-        <div>
+        <div className="order-last md:order-first">
           <p className="font-body font-medium text-sm">{product.name}</p>
-          <h2 className="text-[56px] font-semibold leading-[66px]">
+          <h2 className="text-[38px] md:text-[56px] font-semibold leading-tight md:leading-[66px]">
             {product.title}
           </h2>
-          <p className="text-base leading-6 opacity-80 mt-2">{product.desc}</p>
+          <p className="text-sm md:text-base md:leading-6 opacity-80 mt-2">
+            {product.desc}
+          </p>
 
           <div className="flex items-center gap-4 mt-8">
             <Button variant="filled">
@@ -34,7 +36,7 @@ const ProductSlide = ({
           <img
             src={product.imageUrl}
             alt={product.name + " image"}
-            className="h-[440px] w-auto block mx-auto"
+            className="h-[320px] md:h-[440px] w-auto block mx-auto"
           />
         </div>
       </div>
