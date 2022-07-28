@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { AiOutlineDelete, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { BiShoppingBag } from "react-icons/bi";
 import { MdClose } from "react-icons/md";
-import { useAppDispatch, useAppSelector } from "../store";
+import { useAppDispatch, useAppSelector } from "../../../store";
 import {
   addToCart,
   CartItemType,
@@ -10,8 +10,8 @@ import {
   removeFromCart,
   selectCartItems,
   toggleCart,
-} from "../store/slices/cartSlice";
-import Button from "./core/button";
+} from "@/store/slices/cartSlice";
+import Button from "../../core/button";
 
 const CartItemAction = ({ product }: { product: CartItemType }) => {
   const dispatch = useAppDispatch();
@@ -29,13 +29,20 @@ const CartItemAction = ({ product }: { product: CartItemType }) => {
           onClick={() => dispatch(reduceCartItemCount(product))}
           disabled={productCount === 1}
           className="disabled:opacity-20"
+          data-testid={`${product.id}-reduce-cart`}
         >
           <AiOutlineMinus size={24} className="cursor-pointer" />
         </button>
-        <span className="text-base font-medium">
+        <span
+          className="text-base font-medium"
+          data-testid={`${product.id}-count`}
+        >
           {String(product.itemCount).padStart(2, "0")}
         </span>
-        <button onClick={() => dispatch(addToCart(product))}>
+        <button
+          onClick={() => dispatch(addToCart(product))}
+          data-testid={`${product.id}-increase-cart`}
+        >
           <AiOutlinePlus size={24} className="cursor-pointer" />
         </button>
       </div>
@@ -45,7 +52,10 @@ const CartItemAction = ({ product }: { product: CartItemType }) => {
 
 const CartItem = ({ product }: { product: CartItemType }) => {
   return (
-    <div className="flex items-stretch justify-between py-8 border-b-[1px] border-[#E9E9E9]">
+    <div
+      className="flex items-stretch justify-between py-8 border-b-[1px] border-[#E9E9E9]"
+      data-testid="cart-item"
+    >
       <div className="flex items-stretch gap-3">
         {/* image */}
         <div className="p-4 rounded bg-[#E8F0D6] w-[100px] aspect-square">
@@ -78,7 +88,8 @@ const CartItem = ({ product }: { product: CartItemType }) => {
   );
 };
 
-const Cart = ({ open = false }: { open: boolean }) => {
+const Cart = () => {
+  const isCartOpen = useAppSelector((state) => state.cart.open);
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector(selectCartItems);
   const hasItems = !!cartItems.length;
@@ -91,7 +102,7 @@ const Cart = ({ open = false }: { open: boolean }) => {
     [cartItems]
   );
 
-  if (!open) return null;
+  if (!isCartOpen) return null;
 
   return (
     <div className="">
@@ -119,7 +130,9 @@ const Cart = ({ open = false }: { open: boolean }) => {
           {hasItems ? (
             cartItems.map((product, i) => <CartItem product={product} />)
           ) : (
-            <p className="text-xl text-center">No Item in cart</p>
+            <p className="text-xl text-center" data-testid="no-item-text">
+              No Item in cart
+            </p>
           )}
         </div>
         {/* checkout */}
@@ -131,7 +144,9 @@ const Cart = ({ open = false }: { open: boolean }) => {
             <div className="flex items-stretch justify-between gap-4 mt-6">
               <div>
                 <p className="text-lg text-dark_secondary">Sub total:</p>
-                <p className="text-xl font-semibold">$ {subTotal}</p>
+                <p className="text-xl font-semibold">
+                  $ <span data-testid="cart-sub-total">{subTotal}</span>
+                </p>
               </div>
               <Button variant="filled" css="w-2/3 font-semibold">
                 Checkout

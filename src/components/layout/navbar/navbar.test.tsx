@@ -1,10 +1,10 @@
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
-import { Header } from "./navbar";
-import { renderWithProviders } from "../../utils/test-utils";
-import { products } from "../../data";
+import { screen } from "@testing-library/react";
+import { describe, expect } from "vitest";
+import { products } from "../../../data";
+import { renderWithProviders } from "../../../utils/test-utils";
+import { Header } from ".";
 // import store from "../../store";
-import { addToCart, removeFromCart } from "../../store/slices/cartSlice";
+import { addToCart, removeFromCart } from "../../../store/slices/cartSlice";
 
 describe("Header", () => {
   test("should render badge count ", () => {

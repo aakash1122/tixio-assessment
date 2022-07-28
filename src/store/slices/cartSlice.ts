@@ -5,9 +5,10 @@ import { Product } from "../../types";
 export type CartItemType = Product & {
   itemCount: number;
 };
+export type CartItems = Record<string, CartItemType>;
 
 interface InitialCartState {
-  cartItems: Record<string, CartItemType>;
+  cartItems: CartItems;
   wishList: string[];
   open: boolean;
 }
