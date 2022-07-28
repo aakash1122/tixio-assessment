@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { AiOutlineHeart, AiOutlineUser } from "react-icons/ai";
 import { BiShoppingBag } from "react-icons/bi";
 import { CgMenuGridR } from "react-icons/cg";

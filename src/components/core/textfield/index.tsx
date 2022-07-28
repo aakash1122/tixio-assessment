@@ -1,5 +1,5 @@
-import React, { HTMLInputTypeAttribute } from "react";
-import { BaseComponent } from "../../types/component-types";
+import { HTMLInputTypeAttribute } from "react";
+import { BaseComponent } from "../../../types/component-types";
 
 const variants = {
   filled: "bg-[#C39EF3]",
