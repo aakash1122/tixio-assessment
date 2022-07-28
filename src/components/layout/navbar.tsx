@@ -35,7 +35,7 @@ const BrandLogo = () => {
   );
 };
 
-const Header = () => {
+export const Header = () => {
   const dispatch = useAppDispatch();
   const cartCount = useAppSelector(selectCartCount);
   const wishList = useAppSelector(selectWishlist).length;
@@ -56,10 +56,14 @@ const Header = () => {
         <FiSearch size={20} />
       </TextField>
       <div className="flex items-center gap-4">
-        <Badge count={wishList} onClick={() => {}}>
+        <Badge count={wishList} onClick={() => {}} name="wish-count">
           <AiOutlineHeart size={20} />
         </Badge>
-        <Badge count={cartCount} onClick={() => dispatch(toggleCart())}>
+        <Badge
+          count={cartCount}
+          onClick={() => dispatch(toggleCart())}
+          name="cart-count"
+        >
           <BiShoppingBag size={20} />
         </Badge>
         <Badge onClick={() => {}}>
