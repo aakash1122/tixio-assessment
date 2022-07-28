@@ -24,10 +24,3 @@ body {
 .nav-link {
   @apply text-sm font-medium capitalize cursor-pointer hover:text-primary;
 }
-
-/* .nextBtn {
-  @apply bg-red-200 w-6 h-6 p-4 rounded-full;
-} */
-.prevBtn {
-  @apply absolute top-0;
-}
