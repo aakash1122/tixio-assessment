@@ -71,7 +71,7 @@ const ProductCard = ({ product }: Props) => {
             onClick={onAddToCart}
           >
             <p className="group-hover:text-white">Add To Cart</p>
-            <p className="group-hover:text-white">$${price}</p>
+            <p className="group-hover:text-white">${price}</p>
           </Button>
         </div>
       </div>

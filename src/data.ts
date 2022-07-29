@@ -8,7 +8,7 @@ export const products: Product[] = [
     name: "SONY WH-H910N",
     title: "Best in Hi-Res and Noise Cancelling",
     desc: "Experience finely tuned noise-canceling performance in a comfortable headphone. Long-lasting battery life plus quick charging keeps you listening for up to 35 hours since start.",
-    price: 234,
+    price: 200,
     prevPrice: null,
     rating: 5,
     imageUrl: Headphone,
@@ -19,7 +19,7 @@ export const products: Product[] = [
     name: "Sony Alpha A7 III Mirrorless ",
     title: "Best in Hi-Res and Noise Cancelling",
     desc: "Experience finely tuned noise-canceling performance in a comfortable headphone. Long-lasting battery life plus quick charging keeps you listening for up to 35 hours since start.",
-    price: 1200,
+    price: 100,
     prevPrice: null,
     rating: 5,
     imageUrl:
