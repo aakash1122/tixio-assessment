@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
 import { RootState } from "..";
 import { Product } from "../../types";
 
@@ -39,6 +40,8 @@ export const cartSlice = createSlice({
         };
         state.cartItems[action.payload.id] = newItem;
       }
+
+      toast.success("Added to cart", { icon: "✅" });
     },
     reduceCartItemCount: (state, action: PayloadAction<Product>) => {
       const item = state.cartItems[action.payload.id];
@@ -57,6 +60,8 @@ export const cartSlice = createSlice({
       state.cartItems = {
         ...prevItems,
       };
+
+      toast.error("removed from cart");
     },
     toggleFromWishList: (state, action: PayloadAction<string>) => {
       const productIndex = state.wishList.indexOf(action.payload);

@@ -128,7 +128,9 @@ const Cart = () => {
         {/* cart item list */}
         <div className="px-6 py-6">
           {hasItems ? (
-            cartItems.map((product, i) => <CartItem product={product} />)
+            cartItems.map((product, i) => (
+              <CartItem product={product} key={product.id} />
+            ))
           ) : (
             <p className="text-xl text-center" data-testid="no-item-text">
               No Item in cart
