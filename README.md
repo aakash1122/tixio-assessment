@@ -2,6 +2,8 @@
 
 A shopping cart build with React, Tailwind, Reduxtoolkit, vite, vitest 🔥
 
+### [live preview ](https://shopnow-lac.vercel.app/)
+
 <img src="/preview/preview1.png" alt="preview" style="height: 300px; width:600px;"/>
 <img src="/preview/preview2.png" alt="preview" style="height: 300px; width:600px;"/>
 <img src="/preview/preview3.png" alt="preview" style="height: 300px; width:600px;"/>
